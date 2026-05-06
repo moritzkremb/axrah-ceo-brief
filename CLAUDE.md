@@ -23,6 +23,7 @@ Then turn it into decisions and team directives — not a data dump.
 5. Write the brief to `briefs/YYYY-MM-DD.md` (today's date)
 6. Also write to `briefs/latest.md` (overwrite)
 7. Commit and push with message: "Daily CEO brief — YYYY-MM-DD"
+8. Output the full brief in the chat so Tiger can read it immediately
 
 ## Brief format
 
