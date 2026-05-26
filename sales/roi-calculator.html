@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXRAH ROI Calculator</title>
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0C24;
+    --navy: #0F1B2D;
+    --navy-mid: #1A2B40;
+    --navy-light: #243449;
+    --text: #F0F4F8;
+    --text-muted: #8EA0B4;
+    --border: #2A3D54;
+    --green: #00C878;
+    --green-dark: #009960;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 32px 20px;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .logo-mark {
+    width: 44px;
+    height: 44px;
+    background: var(--red);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -1px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+  header p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* Layout */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .card h2 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  /* Product selector */
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+  .product-option {
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .product-option:hover { border-color: var(--red); background: var(--navy-light); }
+  .product-option.selected { border-color: var(--red); background: rgba(200,16,46,0.08); }
+  .product-option .name { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
+  .product-option .price { font-size: 18px; font-weight: 800; color: var(--red); }
+  .product-option .sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
+  .product-option input[type=radio] { display: none; }
+
+  /* Inputs */
+  .field { margin-bottom: 18px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .input-wrap {
+    display: flex;
+    align-items: center;
+    background: var(--navy-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+  .input-wrap:focus-within { border-color: var(--red); }
+  .input-wrap .prefix, .input-wrap .suffix {
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--navy);
+    height: 44px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .input-wrap .suffix { border-right: none; border-left: 1px solid var(--border); }
+  .input-wrap input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 14px;
+    height: 44px;
+    width: 100%;
+  }
+  .input-wrap input::-webkit-inner-spin-button { opacity: 0.4; }
+
+  /* Range slider */
+  .range-wrap { display: flex; align-items: center; gap: 12px; }
+  input[type=range] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--red);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 3px rgba(200,16,46,0.2);
+  }
+  .range-val {
+    min-width: 28px;
+    text-align: right;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  /* Results */
+  .results-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 20px;
+  }
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .results-header h2 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+  }
+  .payback-badge {
+    background: rgba(0, 200, 120, 0.12);
+    border: 1px solid rgba(0, 200, 120, 0.3);
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 640px) { .metrics-row { grid-template-columns: 1fr 1fr; } }
+  .metric {
+    background: var(--navy-light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 14px;
+  }
+  .metric .label { font-size: 11px; color: var(--text-muted); font-weight: 500; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .metric .value { font-size: 20px; font-weight: 800; line-height: 1; }
+  .metric .value.green { color: var(--green); }
+  .metric .value.red { color: var(--red); }
+  .metric .value.white { color: var(--text); }
+
+  /* Projection bars */
+  .projection { margin-bottom: 10px; }
+  .projection-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  .projection-label .yr { font-weight: 600; color: var(--text-muted); }
+  .projection-label .amt { font-weight: 700; color: var(--text); }
+  .bar-track {
+    height: 8px;
+    background: var(--navy-light);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .bar-fill.yr1 { background: var(--red); }
+  .bar-fill.yr2 { background: #E85A10; }
+  .bar-fill.yr3 { background: var(--green); }
+
+  /* Payback timeline */
+  .timeline {
+    position: relative;
+    height: 48px;
+    background: var(--navy-light);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+    border: 1px solid var(--border);
+  }
+  .timeline-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    background: linear-gradient(90deg, var(--red-dark), var(--red));
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    min-width: 0;
+  }
+  .timeline-fill span {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    white-space: nowrap;
+  }
+  .timeline-label {
+    position: absolute;
+    top: 0; bottom: 0;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* Footnote */
+  .footnote {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  /* Divider */
+  hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="logo-mark">AX</div>
+    <div>
+      <h1>AXRAH ROI Calculator</h1>
+      <p>Estimate your return on a Chamber investment — built for B2B consultations</p>
+    </div>
+  </header>
+
+  <!-- Product + Inputs -->
+  <div class="grid">
+
+    <!-- Left: Product + session price -->
+    <div class="card">
+      <h2>Device</h2>
+      <div class="product-grid" id="productGrid">
+        <label class="product-option selected" onclick="selectProduct(0)">
+          <input type="radio" name="product" checked>
+          <div class="name">Chamber</div>
+          <div class="price">$16,999</div>
+          <div class="sub">13,680 LEDs · 4 wavelengths<br>Full-body precision</div>
+        </label>
+        <label class="product-option" onclick="selectProduct(1)">
+          <input type="radio" name="product">
+          <div class="name">Chamber Ultra</div>
+          <div class="price">$26,999</div>
+          <div class="sub">43,200 LEDs · 5 wavelengths<br>129 mW/cm² · pulse 1–10K Hz</div>
+        </label>
+      </div>
+
+      <hr>
+
+      <div class="field">
+        <label>Price per session</label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="number" id="sessionPrice" value="75" min="1" max="500" oninput="calc()">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Operating costs / month (rent, staff, etc.)</label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="number" id="opCost" value="200" min="0" oninput="calc()">
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Utilisation -->
+    <div class="card">
+      <h2>Utilisation</h2>
+
+      <div class="field">
+        <label>Sessions per day</label>
+        <div class="range-wrap">
+          <input type="range" id="sessionsDay" min="1" max="20" value="6" oninput="syncRange('sessionsDay','sessionsVal');calc()">
+          <span class="range-val" id="sessionsVal">6</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Days open per week</label>
+        <div class="range-wrap">
+          <input type="range" id="daysWeek" min="1" max="7" value="5" oninput="syncRange('daysWeek','daysVal');calc()">
+          <span class="range-val" id="daysVal">5</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Occupancy rate</label>
+        <div class="range-wrap">
+          <input type="range" id="occupancy" min="10" max="100" step="5" value="65" oninput="syncRange('occupancy','occupancyVal','%');calc()">
+          <span class="range-val" id="occupancyVal">65%</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Average sessions per client / month</label>
+        <div class="range-wrap">
+          <input type="range" id="sessionsClient" min="1" max="20" value="4" oninput="syncRange('sessionsClient','clientVal');calc()">
+          <span class="range-val" id="clientVal">4</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="results-card">
+    <div class="results-header">
+      <h2>Projected Returns</h2>
+      <div class="payback-badge" id="paybackBadge">Payback: — months</div>
+    </div>
+
+    <div class="metrics-row">
+      <div class="metric">
+        <div class="label">Monthly Revenue</div>
+        <div class="value white" id="metMonthlyRev">—</div>
+      </div>
+      <div class="metric">
+        <div class="label">Monthly Profit</div>
+        <div class="value green" id="metMonthlyProfit">—</div>
+      </div>
+      <div class="metric">
+        <div class="label">Clients / Month</div>
+        <div class="value white" id="metClients">—</div>
+      </div>
+      <div class="metric">
+        <div class="label">Annual Revenue</div>
+        <div class="value white" id="metAnnualRev">—</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:8px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-muted);">3-Year Cumulative Revenue</div>
+
+    <div class="projection">
+      <div class="projection-label">
+        <span class="yr">Year 1</span>
+        <span class="amt" id="yr1amt">—</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill yr1" id="bar1" style="width:0%"></div></div>
+    </div>
+    <div class="projection">
+      <div class="projection-label">
+        <span class="yr">Year 2</span>
+        <span class="amt" id="yr2amt">—</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill yr2" id="bar2" style="width:0%"></div></div>
+    </div>
+    <div class="projection">
+      <div class="projection-label">
+        <span class="yr">Year 3</span>
+        <span class="amt" id="yr3amt">—</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill yr3" id="bar3" style="width:0%"></div></div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-fill" id="timelineFill" style="width:0%">
+        <span id="timelineLabel"></span>
+      </div>
+      <div class="timeline-label" id="timelineEnd">36-month window</div>
+    </div>
+
+    <p class="footnote">
+      Revenue = sessions/day × occupancy × days/week × 4.33 weeks × session price. Profit = revenue minus operating costs. Payback = device cost ÷ monthly profit. Projections assume steady utilisation. Year 1 net profit deducts device cost.
+      <br>All figures are estimates for planning purposes only. Actual results will vary.
+    </p>
+  </div>
+
+</div>
+
+<script>
+  const PRODUCTS = [
+    { name: 'Chamber', price: 16999 },
+    { name: 'Chamber Ultra', price: 26999 }
+  ];
+  let selectedProduct = 0;
+
+  function selectProduct(idx) {
+    selectedProduct = idx;
+    document.querySelectorAll('.product-option').forEach((el, i) => {
+      el.classList.toggle('selected', i === idx);
+    });
+    calc();
+  }
+
+  function syncRange(id, valId, suffix = '') {
+    document.getElementById(valId).textContent = document.getElementById(id).value + suffix;
+  }
+
+  function fmt(n) {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(2) + 'M';
+    if (n >= 1000) return '$' + Math.round(n).toLocaleString();
+    return '$' + Math.round(n);
+  }
+
+  function calc() {
+    const deviceCost = PRODUCTS[selectedProduct].price;
+    const sessionPrice = parseFloat(document.getElementById('sessionPrice').value) || 0;
+    const opCost = parseFloat(document.getElementById('opCost').value) || 0;
+    const sessionsDay = parseInt(document.getElementById('sessionsDay').value);
+    const daysWeek = parseInt(document.getElementById('daysWeek').value);
+    const occupancy = parseInt(document.getElementById('occupancy').value) / 100;
+    const sessionsPerClient = parseInt(document.getElementById('sessionsClient').value);
+
+    const monthlySessions = sessionsDay * occupancy * daysWeek * 4.33;
+    const monthlyRev = monthlySessions * sessionPrice;
+    const monthlyProfit = monthlyRev - opCost;
+    const clients = monthlySessions / sessionsPerClient;
+
+    const yr1Rev = monthlyRev * 12;
+    const yr2Rev = yr1Rev * 2;
+    const yr3Rev = yr1Rev * 3;
+
+    const paybackMonths = monthlyProfit > 0 ? deviceCost / monthlyProfit : Infinity;
+
+    // Update metrics
+    document.getElementById('metMonthlyRev').textContent = fmt(monthlyRev);
+    document.getElementById('metMonthlyProfit').textContent = fmt(monthlyProfit);
+    document.getElementById('metClients').textContent = Math.round(clients);
+    document.getElementById('metAnnualRev').textContent = fmt(yr1Rev);
+
+    // Payback badge
+    const badge = document.getElementById('paybackBadge');
+    if (paybackMonths === Infinity || paybackMonths > 120) {
+      badge.textContent = 'Payback: N/A';
+      badge.style.color = 'var(--text-muted)';
+      badge.style.borderColor = 'var(--border)';
+      badge.style.background = 'transparent';
+    } else {
+      badge.textContent = `Payback: ${Math.round(paybackMonths)} months`;
+      badge.style.color = 'var(--green)';
+      badge.style.borderColor = 'rgba(0,200,120,0.3)';
+      badge.style.background = 'rgba(0,200,120,0.12)';
+    }
+
+    // Projection bars (relative to yr3)
+    document.getElementById('yr1amt').textContent = fmt(yr1Rev);
+    document.getElementById('yr2amt').textContent = fmt(yr2Rev);
+    document.getElementById('yr3amt').textContent = fmt(yr3Rev);
+    document.getElementById('bar1').style.width = '33.3%';
+    document.getElementById('bar2').style.width = '66.6%';
+    document.getElementById('bar3').style.width = '100%';
+
+    // Timeline (payback within 36 months)
+    const pct = paybackMonths < 36 ? (paybackMonths / 36) * 100 : 100;
+    document.getElementById('timelineFill').style.width = Math.min(pct, 100) + '%';
+    if (paybackMonths <= 36) {
+      document.getElementById('timelineLabel').textContent = `Break-even: month ${Math.round(paybackMonths)}`;
+    } else {
+      document.getElementById('timelineLabel').textContent = '';
+    }
+  }
+
+  calc();
+</script>
+</body>
+</html>

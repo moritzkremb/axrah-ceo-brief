@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXRAH vs. Competition</title>
+<style>
+  :root {
+    --red: #C8102E;
+    --red-light: rgba(200,16,46,0.12);
+    --red-border: rgba(200,16,46,0.4);
+    --navy: #0F1B2D;
+    --navy-mid: #1A2B40;
+    --navy-light: #243449;
+    --text: #F0F4F8;
+    --text-muted: #8EA0B4;
+    --border: #2A3D54;
+    --green: #00C878;
+    --yellow: #F5A623;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    padding: 36px 24px;
+  }
+
+  .page { max-width: 980px; margin: 0 auto; }
+
+  /* Header */
+  header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 14px; }
+  .logo-mark {
+    width: 44px; height: 44px;
+    background: var(--red);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px; letter-spacing: -1px; color: #fff;
+    flex-shrink: 0;
+  }
+  header h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.3px; }
+  header p { font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+  .disclaimer {
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    max-width: 300px;
+    line-height: 1.5;
+  }
+
+  /* Highlight cards (top-line AXRAH advantage) */
+  .highlight-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 640px) { .highlight-row { grid-template-columns: 1fr; } }
+  .highlight {
+    background: var(--red-light);
+    border: 1px solid var(--red-border);
+    border-radius: 10px;
+    padding: 18px 16px;
+  }
+  .highlight .hl-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; color: rgba(200,16,46,0.85); font-weight: 600; margin-bottom: 6px; }
+  .highlight .hl-value { font-size: 22px; font-weight: 900; color: var(--text); line-height: 1; margin-bottom: 4px; }
+  .highlight .hl-sub { font-size: 12px; color: var(--text-muted); }
+
+  /* Main comparison table */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  /* Column headers */
+  thead tr th {
+    padding: 16px 14px 14px;
+    text-align: center;
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--border);
+    font-weight: 700;
+  }
+  thead tr th:first-child { text-align: left; }
+  .col-axrah { background: rgba(200,16,46,0.06); }
+  .col-axrah-ultra { background: rgba(200,16,46,0.10); }
+
+  .th-name { font-size: 15px; font-weight: 800; margin-bottom: 2px; }
+  .th-sub { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+  .th-price { font-size: 17px; font-weight: 900; margin-top: 6px; }
+  .th-price.our { color: var(--red); }
+  .th-price.comp { color: var(--text-muted); }
+  .th-price.comp span { font-size: 10px; }
+
+  /* Body rows */
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+  td {
+    padding: 13px 14px;
+    vertical-align: middle;
+    text-align: center;
+  }
+  td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    background: var(--navy-mid);
+    border-right: 1px solid var(--border);
+    min-width: 160px;
+  }
+
+  /* AXRAH columns */
+  .col-axrah { background: rgba(200,16,46,0.04); }
+  .col-axrah-ultra { background: rgba(200,16,46,0.07); }
+  .col-axrah-ultra.winner { color: var(--green); font-weight: 800; }
+
+  /* Cell types */
+  .check { color: var(--green); font-size: 16px; }
+  .cross { color: #4A5A6A; font-size: 14px; }
+  .dash { color: var(--border); font-size: 18px; }
+  .partial { color: var(--yellow); font-size: 14px; }
+  .val { font-weight: 700; color: var(--text); }
+  .val-green { font-weight: 800; color: var(--green); }
+  .val-muted { font-weight: 500; color: var(--text-muted); font-size: 12px; }
+  .val-red { font-weight: 800; color: var(--red); }
+
+  /* Section rows */
+  .section-row td {
+    background: var(--navy-light);
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+  .section-row td:not(:first-child) { background: var(--navy-light); }
+
+  /* Winner banner */
+  .winner-banner {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+
+  /* Footer callouts */
+  .callout-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  @media (max-width: 640px) { .callout-row { grid-template-columns: 1fr; } }
+  .callout {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .callout h3 { font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+  .callout ul { padding-left: 16px; }
+  .callout li { font-size: 12px; color: var(--text-muted); line-height: 1.8; }
+  .callout li strong { color: var(--text); }
+
+  .footnote {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 20px;
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  @media print {
+    body { background: #fff; color: #111; padding: 16px; }
+    :root {
+      --navy: #fff;
+      --navy-mid: #f7f7f7;
+      --navy-light: #efefef;
+      --text: #111;
+      --text-muted: #666;
+      --border: #ddd;
+    }
+    .callout, .highlight { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div>
+      <div class="logo-wrap">
+        <div class="logo-mark">AX</div>
+        <div>
+          <h1>AXRAH vs. The Competition</h1>
+          <p>Full-body photobiomodulation — head-to-head</p>
+        </div>
+      </div>
+    </div>
+    <div class="disclaimer">
+      Competitor prices are estimates based on publicly available information. Always use "approximately" or "estimated" when quoting. AXRAH specs per official product pages.
+    </div>
+  </header>
+
+  <!-- Top-line advantage cards -->
+  <div class="highlight-row">
+    <div class="highlight">
+      <div class="hl-label">LED Density Advantage</div>
+      <div class="hl-value">6.2×</div>
+      <div class="hl-sub">Chamber Ultra: 43,200 LEDs vs MitoPOD's 6,960</div>
+    </div>
+    <div class="highlight">
+      <div class="hl-label">Irradiance Advantage</div>
+      <div class="hl-value">4.3×</div>
+      <div class="hl-sub">129 mW/cm² vs MitoPOD's ~30 mW/cm²</div>
+    </div>
+    <div class="highlight">
+      <div class="hl-label">Price vs NovoTHOR</div>
+      <div class="hl-value">~1/3</div>
+      <div class="hl-sub">Chamber Ultra ~$27K vs NovoTHOR's est. $65K+</div>
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th class="col-axrah">
+            <div class="th-name">Chamber</div>
+            <div class="th-sub">High-Output Full-Body</div>
+            <div class="th-price our">$16,999</div>
+            <div><span class="winner-banner">AXRAH</span></div>
+          </th>
+          <th class="col-axrah-ultra">
+            <div class="th-name">Chamber Ultra</div>
+            <div class="th-sub">Pro Multi-Spectral</div>
+            <div class="th-price our">$26,999</div>
+            <div><span class="winner-banner">AXRAH</span></div>
+          </th>
+          <th>
+            <div class="th-name">NovoTHOR</div>
+            <div class="th-sub">Thor Photomedicine</div>
+            <div class="th-price comp">~$65K+ <span>est.</span></div>
+          </th>
+          <th>
+            <div class="th-name">TheraLight</div>
+            <div class="th-sub">360i / Series</div>
+            <div class="th-price comp">~$45–85K <span>est.</span></div>
+          </th>
+          <th>
+            <div class="th-name">Prism Light Pod</div>
+            <div class="th-sub">Full-Body Bed</div>
+            <div class="th-price comp">~$35K+ <span>est.</span></div>
+          </th>
+          <th>
+            <div class="th-name">MitoPOD</div>
+            <div class="th-sub">Mito Red Light</div>
+            <div class="th-price comp">Consumer</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- PERFORMANCE -->
+        <tr class="section-row"><td colspan="7">Performance</td></tr>
+
+        <tr>
+          <td>Total LEDs</td>
+          <td class="col-axrah"><span class="val">13,680</span></td>
+          <td class="col-axrah-ultra"><span class="val-green">43,200</span></td>
+          <td><span class="val-muted">N/A</span></td>
+          <td><span class="val-muted">N/A</span></td>
+          <td><span class="val">17,000</span></td>
+          <td><span class="val">6,960</span></td>
+        </tr>
+
+        <tr>
+          <td>Irradiance</td>
+          <td class="col-axrah"><span class="val-muted">Optimised</span></td>
+          <td class="col-axrah-ultra"><span class="val-green">129 mW/cm²</span></td>
+          <td><span class="val-muted">N/A public</span></td>
+          <td><span class="val-muted">N/A public</span></td>
+          <td><span class="val-muted">N/A public</span></td>
+          <td><span class="val">~30 mW/cm²</span></td>
+        </tr>
+
+        <tr>
+          <td>Wavelengths</td>
+          <td class="col-axrah"><span class="val">4</span><br><span class="val-muted">633/850/940/1060nm</span></td>
+          <td class="col-axrah-ultra"><span class="val-green">5</span><br><span class="val-muted">633/660/810/940/1060nm</span></td>
+          <td><span class="val">2</span><br><span class="val-muted">660/850nm</span></td>
+          <td><span class="val">4</span><br><span class="val-muted">multiple</span></td>
+          <td><span class="val">3</span><br><span class="val-muted">630/660/850nm</span></td>
+          <td><span class="val">2–3</span><br><span class="val-muted">varies</span></td>
+        </tr>
+
+        <tr>
+          <td>Pulse Technology</td>
+          <td class="col-axrah"><span class="cross">—</span></td>
+          <td class="col-axrah-ultra"><span class="val-green">1–10,000 Hz</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="partial">Limited</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+
+        <!-- COVERAGE -->
+        <tr class="section-row"><td colspan="7">Coverage &amp; Form Factor</td></tr>
+
+        <tr>
+          <td>Full-body coverage</td>
+          <td class="col-axrah"><span class="check">✓</span></td>
+          <td class="col-axrah-ultra"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Portable</span></td>
+        </tr>
+
+        <tr>
+          <td>No repositioning required</td>
+          <td class="col-axrah"><span class="check">✓</span></td>
+          <td class="col-axrah-ultra"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+
+        <tr>
+          <td>Immersive chamber design</td>
+          <td class="col-axrah"><span class="check">✓</span></td>
+          <td class="col-axrah-ultra"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+
+        <!-- CONTROLS -->
+        <tr class="section-row"><td colspan="7">Controls &amp; Operation</td></tr>
+
+        <tr>
+          <td>Industrial touchscreen</td>
+          <td class="col-axrah"><span class="check">✓</span></td>
+          <td class="col-axrah-ultra"><span class="check">✓</span></td>
+          <td><span class="partial">Basic</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Basic</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+
+        <tr>
+          <td>Wireless remote operation</td>
+          <td class="col-axrah"><span class="check">✓</span></td>
+          <td class="col-axrah-ultra"><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+
+        <tr>
+          <td>Programmable sessions/presets</td>
+          <td class="col-axrah"><span class="check">✓</span></td>
+          <td class="col-axrah-ultra"><span class="check">✓</span></td>
+          <td><span class="partial">Limited</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Limited</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+
+        <tr>
+          <td>Multi-language UI</td>
+          <td class="col-axrah"><span class="val-green">EN/DE/FR/IT/ES</span></td>
+          <td class="col-axrah-ultra"><span class="val-green">EN/DE/FR/IT/ES</span></td>
+          <td><span class="cross">EN only</span></td>
+          <td><span class="cross">EN only</span></td>
+          <td><span class="cross">EN only</span></td>
+          <td><span class="cross">EN only</span></td>
+        </tr>
+
+        <!-- COMMERCIAL -->
+        <tr class="section-row"><td colspan="7">Commercial</td></tr>
+
+        <tr>
+          <td>Est. device price</td>
+          <td class="col-axrah"><span class="val-red">$16,999</span></td>
+          <td class="col-axrah-ultra"><span class="val-red">$26,999</span></td>
+          <td><span class="val-muted">~$65K+</span></td>
+          <td><span class="val-muted">~$45–85K+</span></td>
+          <td><span class="val-muted">~$35K+</span></td>
+          <td><span class="val-muted">Consumer</span></td>
+        </tr>
+
+        <tr>
+          <td>B2B / clinic positioning</td>
+          <td class="col-axrah"><span class="check">✓</span></td>
+          <td class="col-axrah-ultra"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+
+        <tr>
+          <td>Published clinical evidence</td>
+          <td class="col-axrah"><span class="partial">PBM category</span></td>
+          <td class="col-axrah-ultra"><span class="partial">PBM category</span></td>
+          <td><span class="check">✓ Manufacturer trials</span></td>
+          <td><span class="partial">Some</span></td>
+          <td><span class="partial">Some</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom callouts -->
+  <div class="callout-row">
+    <div class="callout">
+      <h3>AXRAH Chamber Ultra — Key Advantages</h3>
+      <ul>
+        <li><strong>43,200 LEDs</strong> — 2.5× Prism Light Pod, 6.2× MitoPOD</li>
+        <li><strong>5 wavelengths</strong> — broadest spectrum in class (633/660/810/940/1060nm)</li>
+        <li><strong>129 mW/cm²</strong> — 4.3× the irradiance of MitoPOD</li>
+        <li><strong>Programmable pulse 1–10,000 Hz</strong> — no competitor at this price point</li>
+        <li><strong>~1/3 the price of NovoTHOR</strong> for superior spec</li>
+        <li><strong>Multi-language (5 languages)</strong> — built for global deployment</li>
+      </ul>
+    </div>
+    <div class="callout">
+      <h3>Best-Fit B2B Use Cases</h3>
+      <ul>
+        <li><strong>Chamber ($16,999)</strong> — medspas, chiropractic, PT clinics, boutique gyms</li>
+        <li><strong>Chamber Ultra ($26,999)</strong> — performance centers, sports teams, luxury hotels, neurological rehab, integrative medicine</li>
+        <li>Session pricing: <strong>$50–$100/session</strong> typical; payback in 6–18 months at moderate utilisation</li>
+        <li>Both devices: wireless remote, programmable protocols, multi-language — built for staff-run clinical environments</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="footnote">
+    Competitor prices are estimates based on publicly available sources and may vary by configuration, region, or distributor. Always present competitor figures as approximate. AXRAH device specs per official product pages (May 2026). LED counts and irradiance figures for competitors reflect publicly available data where available; "N/A public" indicates specifications not published by the manufacturer.
+  </p>
+
+</div>
+</body>
+</html>
