@@ -70,7 +70,7 @@ Then turn it into decisions and team directives — not a data dump.
 
 AXRAH is a red light therapy / photobiomodulation device company.
 
-- **Products:** Panel ($449), Panel Pro ($1,999), Grid ($1,999), Pod ($14,999), Chamber Ultra ($26,999)
+- **Products:** Panel ($449), Panel Pro ($1,999), Grid ($1,999), Chamber ($16,999), Chamber Ultra ($26,999)
 - **Positioning:** Clinical-grade PBM at 1/3 to 1/5 competitor pricing
 - **Markets:** USA, Germany, Austria
 - **Sales model:** Primarily B2B (clinics, gyms, sports teams, hotels)
