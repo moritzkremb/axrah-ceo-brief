@@ -70,12 +70,12 @@ Then turn it into decisions and team directives — not a data dump.
 
 AXRAH is a red light therapy / photobiomodulation device company.
 
-- **Products:** Panel ($449), Panel Pro ($1,999), Grid ($1,999), Pod ($14,999), Pod Ultra ($24,999)
+- **Products:** Panel ($449), Panel Pro ($1,999), Grid ($1,999), Pod ($14,999), Chamber Ultra ($26,999)
 - **Positioning:** Clinical-grade PBM at 1/3 to 1/5 competitor pricing
 - **Markets:** USA, Germany, Austria
 - **Sales model:** Primarily B2B (clinics, gyms, sports teams, hotels)
 - **Key competitors:** NovoTHOR ($65K+), TheraLight ($45-85K+), Prism Light Pod ($35K+), Joovv (panels only)
-- **Differentiator:** Pod Ultra — 43,200 LEDs, 5 wavelengths (633/660/810/850/940nm), 6,000W, 129 mW/cm²
+- **Differentiator:** Chamber Ultra — 43,200 LEDs, 5 wavelengths (633/660/810/850/940nm), 6,000W, 129 mW/cm²
 - **Target ICPs:** Medical spas, gyms/fitness, chiropractic/PT, sports teams, hotels/resorts
 - **Key metric:** 32% of US adults have tried or plan to try RLT
 - **Market:** RLT beds $8.21B (2025) → $19.30B by 2032 (13% CAGR)
