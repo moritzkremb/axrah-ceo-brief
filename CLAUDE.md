@@ -13,6 +13,20 @@ Then turn it into decisions and team directives — not a data dump.
 
 ## How to run
 
+### Step 0 — Sync check (do this first, every time)
+
+Before doing any research or writing, check if today's brief has already been produced by another session (e.g. the desktop app):
+
+```bash
+git fetch origin
+git log --all --oneline | grep "Daily CEO brief — $(date +%Y-%m-%d)"
+```
+
+- **If a match is found:** The brief already exists. Find the branch it's on, read the file, and output it in chat immediately. Do not re-run research or re-write the brief. No wasted credits.
+- **If no match is found:** Proceed with steps 1–8 below to generate the brief fresh.
+
+### Steps 1–8 (only if brief doesn't already exist for today)
+
 1. Fetch the latest trend data from:
    ```
    https://raw.githubusercontent.com/moritzkremb/axrah-trend-scraper/main/outputs/latest.md
