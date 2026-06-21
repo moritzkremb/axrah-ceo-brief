@@ -2,7 +2,7 @@
 
 **Use case:** Cold outreach to professional football clubs (Head of Sports Science, Performance Director, Club Medical Officer, Academy Director)
 
-**Lead product:** AXRAH Pod Ultra ($24,999) or Pod ($14,999) for club training facility
+**Lead product:** AXRAH Chamber Ultra ($24,999) or Chamber ($14,999) for club training facility
 **Hook:** Clinical-grade full-body PBM at 1/5 the cost of NovoTHOR
 
 ---
@@ -19,7 +19,7 @@ Photobiomodulation (full-body red light therapy) is showing up in more and more 
 
 Most full-body systems cost £50,000–£100,000+. We build them for a fraction of that.
 
-The AXRAH Pod Ultra — 43,200 LEDs, 5 wavelengths, 6,000W output, 129 mW/cm² irradiance — sits next to the NovoTHOR on clinical specs at roughly 1/5 the price. We supply clinics, medical centres, and performance facilities across the US and Europe.
+The AXRAH Chamber Ultra — 43,200 LEDs, 5 wavelengths, 6,000W output, 129 mW/cm² irradiance — sits next to the NovoTHOR on clinical specs at roughly 1/5 the price. We supply clinics, medical centres, and performance facilities across the US and Europe.
 
 If you're looking at recovery infrastructure for next season, I'd like to show you what we're seeing clubs do with this.
 
@@ -52,7 +52,7 @@ AXRAH | [Phone]
 
 ## Email 3 — Final Nudge (14 days, no reply)
 
-**Subject:** Last note — AXRAH Pod Ultra
+**Subject:** Last note — AXRAH Chamber Ultra
 
 Hi [First Name],
 
@@ -101,7 +101,7 @@ Hi [First Name], just circling back — happy to send a comparison sheet on the 
 > RLT and cold therapy work on different mechanisms — most elite clubs use both. RLT targets mitochondrial function and reduces inflammation at the cellular level; cold therapy is primarily about acute swelling. They're complementary, not competing.
 
 **"We've heard of NovoTHOR — how do you compare?"**
-> NovoTHOR is a solid system, but it's approximately $130,000 USD, runs two wavelengths, and outputs around 17 mW/cm². Our Pod Ultra runs five wavelengths at 129 mW/cm² and is priced under $25,000. The clinical output is comparable to anything on the market; the price isn't.
+> NovoTHOR is a solid system, but it's approximately $130,000 USD, runs two wavelengths, and outputs around 17 mW/cm². Our Chamber Ultra runs five wavelengths at 129 mW/cm² and is priced under $25,000. The clinical output is comparable to anything on the market; the price isn't.
 
 **"We need to see the evidence before we commit."**
 > Understood. I can send you a summary of the peer-reviewed literature and our tech spec sheet. If you want a hands-on look, we can arrange a demo session for your medical team.

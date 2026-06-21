@@ -6,7 +6,7 @@
 
 1. **Kingsley Miller — Tue Jun 23, 10:30am** — but see below for correction: *MengYu* is Jun 23, *Kingsley Miller* is Jun 24.
    - **MengYu** (mengyu.wu@coco.xyz) — Jun 23 at 10:30am. Company domain `coco.xyz` returns no clear match. Could be a wellness brand or tech startup. Research before the call — identify company type and likely use case.
-   - **Kingsley Miller** (kingsley.miller@vmppro.com) — Jun 24 at 3:00am. **VMP PRO = Vision Management Performance**, a global sports agency specializing in professional football (soccer), representing current and former pro players. This is a high-value ICP. Athlete recovery is the core pitch — Pod Ultra is the right product for a training facility or club facility. Prep a sports recovery deck and ROI case.
+   - **Kingsley Miller** (kingsley.miller@vmppro.com) — Jun 24 at 3:00am. **VMP PRO = Vision Management Performance**, a global sports agency specializing in professional football (soccer), representing current and former pro players. This is a high-value ICP. Athlete recovery is the core pitch — Chamber Ultra is the right product for a training facility or club facility. Prep a sports recovery deck and ROI case.
 
 **Proton Mail:** There is an unread message in the Proton Mail inbox (notification arrived Jun 19). Unable to access from here — check it manually, could be business-relevant.
 
@@ -26,9 +26,9 @@
 
 ## Competitor Intelligence
 
-- **NovoTHOR is now priced at approximately $130,000+** — significantly higher than previous estimates. Two wavelengths (660/850nm), ~17 mW/cm² irradiance. The pricing gap vs AXRAH Pod Ultra ($24,999) is now over 5x. This is the sharpest talking point in any competitive conversation.
-- **TheraLight 360i:** 48,000 LEDs, 165 mW/cm² irradiance, 4 wavelengths (633/810/850/940nm), integrated PEMF, lifetime LED warranty, independent Certificate of Analysis. Priced approximately $85K+. On paper this is the most competitive unit against the Pod Ultra. Key gaps where AXRAH wins: price (3-4x cheaper), 5 wavelengths (includes 660nm, which TheraLight omits), and total wattage (6,000W).
-- **AXRAH's pricing advantage vs the market:** Pod Ultra at $24,999 is 1/5 of NovoTHOR and roughly 1/3 of TheraLight. This gap is the message.
+- **NovoTHOR is now priced at approximately $130,000+** — significantly higher than previous estimates. Two wavelengths (660/850nm), ~17 mW/cm² irradiance. The pricing gap vs AXRAH Chamber Ultra ($24,999) is now over 5x. This is the sharpest talking point in any competitive conversation.
+- **TheraLight 360i:** 48,000 LEDs, 165 mW/cm² irradiance, 4 wavelengths (633/810/850/940nm), integrated PEMF, lifetime LED warranty, independent Certificate of Analysis. Priced approximately $85K+. On paper this is the most competitive unit against the Chamber Ultra. Key gaps where AXRAH wins: price (3-4x cheaper), 5 wavelengths (includes 660nm, which TheraLight omits), and total wattage (6,000W).
+- **AXRAH's pricing advantage vs the market:** Chamber Ultra at $24,999 is 1/5 of NovoTHOR and roughly 1/3 of TheraLight. This gap is the message.
 - **PEMF integration** is a TheraLight differentiator worth watching — some clinics buy on this feature alone.
 
 ---
@@ -64,13 +64,13 @@ Underlying content themes that are performing based on search volume and article
 - Hold on influencer outreach until content is ready to back it up.
 
 ### Sales
-- **Top priority: VMP PRO call (Jun 24).** Kingsley Miller represents professional football players and clubs. Position Pod Ultra as the facility upgrade — athlete recovery, reduced injury time, competitive edge. Pull club/sports team case studies. Bring irradiance specs and compare to NovoTHOR ($130K vs $24,999).
-- **Prep for MengYu / coco.xyz (Jun 23).** Research the company today. If it's a wellness brand or spa, lead with Grid or Pod. If it's a tech/corporate wellness play, frame differently.
+- **Top priority: VMP PRO call (Jun 24).** Kingsley Miller represents professional football players and clubs. Position Chamber Ultra as the facility upgrade — athlete recovery, reduced injury time, competitive edge. Pull club/sports team case studies. Bring irradiance specs and compare to NovoTHOR ($130K vs $24,999).
+- **Prep for MengYu / coco.xyz (Jun 23).** Research the company today. If it's a wellness brand or spa, lead with Grid or Chamber. If it's a tech/corporate wellness play, frame differently.
 - **NovoTHOR pricing update:** If reps aren't already using "$130K vs $24,999" as the comparison, start now. That's a $105K savings story.
 
 ### Product
 - **PEMF gap:** TheraLight bundles PEMF — some buyers lead with this. Monitor whether it becomes a sales objection. Long-term product consideration.
-- **660nm advantage vs TheraLight:** TheraLight omits 660nm (uses 633nm instead). AXRAH Pod Ultra has both 633 and 660nm. Make sure sales team knows this — it's a real spec advantage.
+- **660nm advantage vs TheraLight:** TheraLight omits 660nm (uses 633nm instead). AXRAH Chamber Ultra has both 633 and 660nm. Make sure sales team knows this — it's a real spec advantage.
 - **Brain health protocols:** As transcranial PBM research grows, evaluate whether AXRAH panel positioning (especially near-infrared output) can support a head/brain protocol. If the specs work, it opens a new market segment.
 
 ### Operations

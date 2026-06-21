@@ -107,7 +107,7 @@
 
 **Headline:**
 > The wavelengths researchers use.
-> Available in the AXRAH Pod Ultra.
+> Available in the AXRAH Chamber Ultra.
 
 **Body (2 lines):**
 > 810nm and 850nm NIR. 129 mW/cm² output. 5 wavelengths total.
@@ -119,7 +119,7 @@
 ---
 
 **AI Visual Prompt:**
-> Premium product photography of the AXRAH Pod Ultra in a sleek, clinical-aesthetic room. Overhead or 45-degree angle shot. The pod is open, glowing with deep red and near-infrared light from inside — warm, dramatic, authoritative. Background is charcoal or dark grey concrete. Minimal props: one white towel folded neatly, one small water glass. Studio lighting with intentional shadows. Style: Tesla product reveal meets high-end medical device photography. No people. Hyper-clean.
+> Premium product photography of the AXRAH Chamber Ultra in a sleek, clinical-aesthetic room. Overhead or 45-degree angle shot. The pod is open, glowing with deep red and near-infrared light from inside — warm, dramatic, authoritative. Background is charcoal or dark grey concrete. Minimal props: one white towel folded neatly, one small water glass. Studio lighting with intentional shadows. Style: Tesla product reveal meets high-end medical device photography. No people. Hyper-clean.
 
 ---
 
@@ -152,7 +152,7 @@
 >
 > Near-infrared light at 810–850nm has been shown in early research to penetrate the skull and activate the cellular energy pathway inside neurons. It's called transcranial photobiomodulation. Sports medicine, longevity research, and concussion recovery clinics are all paying close attention.
 >
-> We built the AXRAH Pod Ultra with these exact wavelengths. 5 total. 129 mW/cm². Clinical output. Not a $130,000 NovoTHOR. A fraction of the cost.
+> We built the AXRAH Chamber Ultra with these exact wavelengths. 5 total. 129 mW/cm². Clinical output. Not a $130,000 NovoTHOR. A fraction of the cost.
 >
 > Swipe through for the mechanism, the evidence, and what this actually feels like.
 >
